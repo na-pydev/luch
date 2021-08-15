@@ -1,0 +1,1 @@
+web: gunicorn luchstom.wsgi --log-file -

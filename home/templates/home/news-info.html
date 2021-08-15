@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block text %}
+<ul class="breadcrumb"
+    style="background-image: url({% static 'images/dna2.jpg' %}); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; ">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'newsletter' %}">Newsletter</a></li>
+    <li>News-info</li>
+</ul>
+<div class="container">
+    <div class="newsletter-box">
+        <div class="news-heading">
+            <div class="news-info">
+                <img src="{{n_info.image_link}}" alt="">
+                <h1>{{n_info.title}}</h1>
+                <p>
+                    {{n_info.text|linebreaks}}
+                </p>
+            </div>
+        </div>
+        <div class="recommended-news">
+            <h1>Latest news</h1>
+            <div class="latest-news">
+                {% for ln in latest_news %}
+                <div class="sorted-news">
+                    <a href="{% url 'news-info' ln.id %}">
+                        <h3>{{ln.title}}</h3>
+                        <p>{{ln.text|truncatewords:10}}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock text %}

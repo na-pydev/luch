@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block text %}
+<ul class="breadcrumb" style="background-image: url({% static 'images/dna2.jpg' %}); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; ">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>Newsletter</li>
+</ul>
+<div class="container">
+    <div class="newsletter-box">
+        <div class="news-heading">
+            <div class="main-news-heading">
+                <a href="{% url 'news-info' main_news.id %}">
+                    <div class="main-news-img"><img src="{{main_news.image_link}}" alt=""></div>
+                    <h1>{{main_news.title}}</h1>
+                    <p>{{main_news.text|truncatewords:25}}</p>
+                </a>
+            </div>
+            <div class="other-news-headings">
+                {% for n in news %}
+                <div class="news-headings">
+                    <a href="{% url 'news-info' n.id %}">
+                        <div class="news-img">
+                            <img src="{{n.image_link}}" alt="">
+                        </div>
+                        <div class="news-text">
+                            <h2>{{n.title}}</h2>
+                            <p>{{n.text|truncatewords:18}}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="recommended-news">
+            <h1>Latest news</h1>
+            <div class="latest-news">
+                {% for ln in latest_news %}
+                <div class="sorted-news">
+                    <a href="{% url 'news-info' ln.id %}">
+                        <h3>{{ln.title}}</h3>
+                        <p>{{ln.text|truncatewords:10}}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock text %}

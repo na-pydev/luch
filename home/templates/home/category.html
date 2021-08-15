@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% block text %}
+<ul class="breadcrumb"
+    style="background-image: url({% static 'images/dna2.jpg' %}); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; ">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li> <a href="{% url 'products' %}">Products</a></li>
+    <li>{{category.name}}</li>
+</ul>
+<div class="container">
+    <div class="all-products">
+        <div class="category-line">
+            <h2 class="category-heading">Category</h2>
+            <ul class="category-list">
+                {% for c in categories %}
+                    {% if c.id == category.id %}
+                    <li class="product-category-item" style="background-color: orangered; color:white;">
+                        {{category.name}}
+                    </li>
+                    {% else %}
+                    <a href="{% url 'category' c.id %}">
+                        <li class="product-category-item">
+                            {{c.name}}
+                        </li>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <h2 class="category-heading bsl">Best Sellers</h2>
+            <ul class="best-sellers-list">
+                {% for best_product in best_seller %}
+                <a href="{% url 'product-detail' best_product.id %}">
+                    <li>
+                        <div class="bsp-details">
+                            <p>{{best_product.name}}</p>
+                        </div>
+                        <div class="bsp-images">
+                            <img src="{{best_product.image_link1}}" alt="product-img">
+                        </div>
+                    </li>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="products-line">
+            {% if c_check == False %}
+            <h3 style="position: absolute;">There is no products in this category yet.</h3>
+            {% endif %}
+            {% for product in c_products %}
+            <div class="product-box">
+                <a href="{% url 'product-detail' product.id %}">
+                    <div class="product-img"><img src="{{product.image_link1}}" alt=""></div>
+                    <div class="pd-info">
+                        <h5>{{product.category.name}}</h5>
+                        <p><b>{{product.name}}</b></p>
+                        <p><b>Model:</b> {{product.model_name}}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div></div>
+        {% if c_products.length > 2 %}
+            {% include 'paginator.html' with page=products %}
+        {% else %}
+            <h2></h2>
+        {% endif %}
+    </div>
+</div>
+{% endblock text %}

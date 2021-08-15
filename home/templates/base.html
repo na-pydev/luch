@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png">
+    <script src="{% static 'js/main.js' %}"></script>
+    <title>Luch Stom Interprise</title>
+    <script src="https://kit.fontawesome.com/f68d03869f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section id="contact-info">
+        <div class="container">
+            <div id="contact-info-box">
+                <div id="phone-email"><a class="connect-link" href="tel:+998712615308"><i class="fas fa-phone-alt">&nbsp;&nbsp;</i> <span class="tehide">+998 (71) 261-53-08</span></a>
+                    &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; <a href="mailto:nur.07@mail.ru" class="connect-link"><i class="fas fa-envelope"></i> &nbsp;&nbsp;
+                    <span class="tehide">nur.07@mail.ru</span></a> </div>
+                <ul id="social-websites">
+                    <li><a href="https://t.me/NurmatovAbdurahim" class="social-link" target="_blank"><i class="fab fa-telegram"></i></a></li>
+                    <li><a href="https://t.me/NurmatovAbdurahim" class="social-link" target="_blank"><i class="fab fa-whatsapp-square"></i></a></li>
+                    <li><a href="https://wa.me/998998979883?text=I'm%20interested%20in%20your%20products." class="social-link" target="_blank"><i class="fab fa-weixin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="navbar">
+        <div class="container">
+            <div id="navbar-box">
+                <div class="logo">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="logo" />
+                        <h3>Luch Stom Interprise</h3>
+                    </a>
+                </div>
+                <ul id="navigation">
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'products' %}">Products</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'newsletter' %}">Newsletter</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}">About Us</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contactus' %}">Contact Us</a>
+                    </li>
+                </ul>
+                <ol id="mySidebar">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <li><a href="{% url 'home' %}" class="nav-link" onclick="closeNav()">Home</a></li>
+                    <li><a href="{% url 'products' %}" class="nav-link" onclick="closeNav()">Products</a></li>
+                    <li><a href="{% url 'newsletter' %}" class="nav-link" onclick="closeNav()">Newsletter</a></li>
+                    <li><a href="{% url 'about' %}" class="nav-link" onclick="closeNav()">About Us</a></li>
+                    <li><a href="{% url 'contactus' %}" class="nav-link" onclick="closeNav()">Contact Us</a></li>
+                </ol>
+                <div class="openbtn">
+                    <button class="openbtn" onclick="openNav()">&#9776;</button>
+                </div>
+
+                <!-- <div id="fav-account">
+                    <div id="fav"><i class="fas fa-heart"></i></div>
+                    <div id="account"><i class="fas fa-user"></i></div>
+                </div> -->
+
+            </div>
+        </div>
+    </section>
+
+    {% block text %}
+    {% endblock text %}
+
+    <footer style=" background-image: url({% static 'images/dna2.jpg' %}); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+        <div class="container">
+            <div class="footer-box">
+                <div class="about-us-part">
+                    <ul id="apes">
+                        <li class="logo">
+                            <img src="{% static 'images/logo.png' %}" alt="logo" />
+                            <h3 id="footer-logo-text">Luch Stom Interprise LLC</h3>
+                        </li>
+                        <li>
+                            <div><i class="fas fa-map-marker-alt"></i></div>&nbsp;&nbsp;&nbsp; <a class="connect-link" href="{% url 'contactus' %}"><p>24, TTZ 4, <br>Mirzo
+                                Ulug'bek district, <br>Tashkent city, Uzbekistan</p></a>
+                        </li>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1239.2457519248098!2d69.38893822829569!3d41.36034807467327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x309640a6f8df4918!2sOOO%20LUCH%20STOM%20INTERPRISE!5e0!3m2!1sen!2s!4v1626013800950!5m2!1sen!2s"
+                            width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <li><a class="connect-link" href="tel:+998712615308"><i class="fas fa-phone-alt">&nbsp;&nbsp;</i> +998 (71) 261-53-08</a></li>
+                        <li><a href="mailto:nur.07@mail.ru" class="connect-link"><i class="fas fa-envelope"></i> &nbsp;&nbsp; nur.07@mail.ru</a></li>
+                    </ul>
+                </div>
+                <div class="links-part">
+                    <h3>Company links</h3>
+                    <ul class="links">
+                        <li class="footer-link">
+                            <a href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="{% url 'products' %}">Products</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="{% url 'newsletter' %}">Newsletter</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="footer-link">
+                            <a href="{% url 'contactus' %}">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="social-websites-part">
+                    <h3>Why us</h3>
+                    <p>The company "LUCH STOM INTERPRISE" presents to you all medical equipment - instruments, dental
+                        materials, equipment of very good quality! Our company has set itself the task of constantly
+                        improving and improving quality, as you can see for yourself.</p>
+                    <ul id="social-websites-footer">
+                        <li><a href="https://t.me/NurmatovAbdurahim" class="social-link" target="_blank"><i class="fab fa-telegram fa-2x"></i></a></li>
+                        <li><a href="https://wa.me/998998979883?text=I'm%20interested%20in%20your%20products." class="social-link" target="_blank"><i class="fab fa-whatsapp-square fa-2x"></i></a></li>
+                        <li><a href="" class="social-link" target="_blank"><i class="fab fa-weixin fa-2x"></i></a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <h3 id="experience">&copy; Luch Stom Interprise <br> 2005 - 2021 </h3>
+        </div>
+
+    </footer>
+</body>
+
+</html>
