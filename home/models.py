@@ -23,6 +23,7 @@ class Product(models.Model):
     image_link4 = models.CharField(max_length=255, blank=True)
     special_product = models.BooleanField(default=False)
     best_seller = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     color = models.CharField(max_length=255)
     category = models.ForeignKey("Category", verbose_name="Category", on_delete=models.CASCADE)
     added_date = models.DateTimeField(auto_now_add=True)
